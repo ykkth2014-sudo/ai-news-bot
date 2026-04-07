@@ -145,8 +145,9 @@ def send_email(html_content: str):
     msg.attach(text_part)
     msg.attach(html_part)
 
+    password_clean = GMAIL_APP_PASSWORD.encode('ascii', errors='ignore').decode('ascii').replace(' ', '')
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-        server.login(GMAIL_USER, GMAIL_APP_PASSWORD)
+        server.login(GMAIL_USER, password_clean)
         server.sendmail(GMAIL_USER, MAIL_TO, msg.as_string())
 
     print(f"✅ メール送信完了 → {MAIL_TO}")
