@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """
 AI ニュースまとめ自動生成スクリプト
-毎朝 Claude API を使って国内・世界のAIニュースをHTMLレポートにまとめ、メール送信する
+毎朝 Claude API を使って国内・世界のAIニュースをHTMLレポートにまとめ、
+GitHub Pages で公開しメールでリンクを送信する
 """
 
 import anthropic
 import smtplib
 import os
+import subprocess
 from datetime import datetime, timezone, timedelta
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -16,12 +18,12 @@ JST = timezone(timedelta(hours=9))
 TODAY = datetime.now(JST).strftime("%Y年%m月%d日")
 TODAY_FILE = datetime.now(JST).strftime("%Y-%m-%d")
 
-ANTHROPIC_API_KEY = os.environ["ANTHROPIC_API_KEY"]
-GMAIL_USER        = os.environ["GMAIL_USER"]        # 送信元GmailアドレS
-GMAIL_APP_PASSWORD = os.environ["GMAIL_APP_PASSWORD"] # Gmailアプリパスワード
-MAIL_TO           = os.environ["MAIL_TO"]           # 受信先メールアドレス
+ANTHROPIC_API_KEY  = os.environ["ANTHROPIC_API_KEY"]
+GMAIL_USER         = os.environ["GMAIL_USER"]
+GMAIL_APP_PASSWORD = os.environ["GMAIL_APP_PASSWORD"]
+MAIL_TO            = os.environ["MAIL_TO"]
+GITHUB_REPOSITORY  = os.environ.get("GITHUB_REPOSITORY", "")  # 例: ykkth2014-sudo/ai-news-bot
 # ─────────────────────────────────────────────────────
-
 
 PROMPT = f"""
 あなたは優秀なAIニュースキュレーターです。
@@ -116,13 +118,11 @@ def generate_html() -> str:
         messages=[{"role": "user", "content": PROMPT}]
     )
 
-    # テキストブロックを結合
     html = ""
     for block in message.content:
         if block.type == "text":
             html += block.text
 
-    # HTMLのみ抽出（```html ... ``` の場合に対応）
     if "```html" in html:
         html = html.split("```html")[1].split("```")[0].strip()
     elif "```" in html:
@@ -131,19 +131,77 @@ def generate_html() -> str:
     return html
 
 
-def send_email(html_content: str):
-    """GmailでHTMLメールを送信する"""
+def save_and_publish(html_content: str) -> str:
+    """docsフォルダにHTMLを保存してGitにコミット・プッシュ"""
+    os.makedirs("docs", exist_ok=True)
+
+    # 今日のファイル
+    filepath = f"docs/ai-news-{TODAY_FILE}.html"
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(html_content)
+
+    # index.html も更新（最新レポートへリダイレクト）
+    index_html = f"""<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=ai-news-{TODAY_FILE}.html">
+  <title>AI ニュースまとめ</title>
+</head>
+<body>
+  <p>最新レポートへ移動中... <a href="ai-news-{TODAY_FILE}.html">こちらをクリック</a></p>
+</body>
+</html>"""
+    with open("docs/index.html", "w", encoding="utf-8") as f:
+        f.write(index_html)
+
+    # Gitコミット＆プッシュ
+    subprocess.run(["git", "config", "user.email", "github-actions@github.com"], check=True)
+    subprocess.run(["git", "config", "user.name", "GitHub Actions"], check=True)
+    subprocess.run(["git", "add", "docs/"], check=True)
+    subprocess.run(["git", "commit", "-m", f"Add AI news report {TODAY_FILE}"], check=True)
+    subprocess.run(["git", "push"], check=True)
+
+    # GitHub Pages URL
+    repo_name = GITHUB_REPOSITORY.split("/")[-1] if "/" in GITHUB_REPOSITORY else "ai-news-bot"
+    username = GITHUB_REPOSITORY.split("/")[0] if "/" in GITHUB_REPOSITORY else "user"
+    page_url = f"https://{username}.github.io/{repo_name}/ai-news-{TODAY_FILE}.html"
+
+    print(f"📄 GitHub Pages URL: {page_url}")
+    return page_url
+
+
+def send_email(page_url: str):
+    """GmailでリンクメールS送信する"""
     print("メール送信中...")
+
+    html_body = f"""
+<!DOCTYPE html>
+<html lang="ja">
+<head><meta charset="UTF-8"></head>
+<body style="font-family: -apple-system, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+  <div style="background: linear-gradient(135deg, #1a1a2e, #0f3460); color: white; padding: 28px; border-radius: 12px; margin-bottom: 20px;">
+    <h1 style="margin:0; font-size:1.5em;">🤖 AI ニュースまとめ</h1>
+    <p style="margin:8px 0 0; opacity:0.8;">{TODAY}</p>
+  </div>
+  <p style="font-size:1.1em; color:#333;">本日のAIニュースレポートが完成しました。</p>
+  <div style="text-align:center; margin: 28px 0;">
+    <a href="{page_url}"
+       style="background:#0f3460; color:white; padding:14px 32px; border-radius:8px; text-decoration:none; font-size:1.1em; font-weight:bold;">
+      📰 レポートを開く
+    </a>
+  </div>
+  <p style="color:#888; font-size:0.85em; text-align:center;">Powered by Claude AI | 自動生成</p>
+</body>
+</html>
+"""
+
     msg = MIMEMultipart("alternative")
     msg["Subject"] = f"🤖 AI ニュースまとめ {TODAY}"
     msg["From"]    = GMAIL_USER
     msg["To"]      = MAIL_TO
-
-    # テキスト版（フォールバック）
-    text_part = MIMEText("HTMLメールが表示されない場合はブラウザで開いてください。", "plain", "utf-8")
-    html_part = MIMEText(html_content, "html", "utf-8")
-    msg.attach(text_part)
-    msg.attach(html_part)
+    msg.attach(MIMEText("本日のAIニュースレポート: " + page_url, "plain", "utf-8"))
+    msg.attach(MIMEText(html_body, "html", "utf-8"))
 
     password_clean = GMAIL_APP_PASSWORD.encode('ascii', errors='ignore').decode('ascii').replace(' ', '')
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
@@ -156,15 +214,8 @@ def send_email(html_content: str):
 def main():
     print(f"=== AI ニュースまとめ生成開始 {TODAY} ===")
     html = generate_html()
-
-    # ファイル保存（デバッグ用）
-    os.makedirs("output", exist_ok=True)
-    filepath = f"output/ai-news-{TODAY_FILE}.html"
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write(html)
-    print(f"📄 HTMLファイル保存: {filepath}")
-
-    send_email(html)
+    page_url = save_and_publish(html)
+    send_email(page_url)
     print("=== 完了 ===")
 
 
