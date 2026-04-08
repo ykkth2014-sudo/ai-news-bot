@@ -2,9 +2,13 @@ name: AI ニュース自動生成
 
 on:
   schedule:
-    # 毎朝6時（JST）= UTC 21時（前日）
     - cron: '0 21 * * *'
   workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   generate-news:
@@ -23,10 +27,11 @@ jobs:
       - name: 依存パッケージをインストール
         run: pip install anthropic
 
-      - name: AIニュースレポートを生成してメール送信
+      - name: AIニュースレポートを生成してGitHub Pagesに公開
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          GMAIL_USER:        ${{ secrets.GMAIL_USER }}
+          ANTHROPIC_API_KEY:  ${{ secrets.ANTHROPIC_API_KEY }}
+          GMAIL_USER:         ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
-          MAIL_TO:           ${{ secrets.MAIL_TO }}
+          MAIL_TO:            ${{ secrets.MAIL_TO }}
+          GITHUB_REPOSITORY:  ${{ github.repository }}
         run: python generate_news.py
