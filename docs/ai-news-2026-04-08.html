@@ -1,0 +1,310 @@
+Based on my research, I now have comprehensive information about AI news from both Japan and around the world. Let me generate the HTML report.
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI ニュースまとめ - 2026年04月08日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, sans-serif; max-width: 960px; margin: 0 auto; padding: 20px; background: #f0f2f5; }
+    header { background: linear-gradient(135deg, #1a1a2e, #0f3460); color: white; padding: 36px 32px; border-radius: 16px; margin-bottom: 28px; }
+    h1 { font-size: 1.9em; } .date { opacity: 0.75; margin-top: 6px; }
+    .tab-container { display: flex; margin-bottom: 24px; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .tab-btn { flex: 1; padding: 16px; border: none; cursor: pointer; font-size: 1.05em; font-weight: 700; background: white; color: #888; }
+    .tab-btn.active.domestic { background: #e74c3c; color: white; }
+    .tab-btn.active.world { background: #2980b9; color: white; }
+    .tab-content { display: none; } .tab-content.active { display: block; }
+    .summary-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin-bottom: 24px; }
+    .summary-card { background: white; border-radius: 12px; padding: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .domestic-section .summary-card { border-left: 4px solid #e74c3c; }
+    .world-section .summary-card { border-left: 4px solid #2980b9; }
+    .summary-card strong { display: block; margin-bottom: 5px; }
+    .summary-card p { font-size: 0.88em; color: #555; line-height: 1.5; }
+    .category-section { background: white; border-radius: 14px; padding: 22px; margin-bottom: 18px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .category-title { font-size: 1.2em; font-weight: 700; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid #f0f2f5; }
+    details { border: 1px solid #e8e8e8; border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+    summary { padding: 13px 16px; cursor: pointer; font-weight: 600; font-size: 0.92em; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    summary::-webkit-details-marker { display: none; }
+    summary:hover { background: #fafafa; }
+    summary::after { content: "▼"; font-size: 0.7em; color: #aaa; }
+    details[open] summary::after { content: "▲"; }
+    .detail-content { padding: 16px 18px; border-top: 1px solid #f0f0f0; color: #444; line-height: 1.75; font-size: 0.9em; }
+    .badge { font-size: 0.7em; padding: 3px 9px; border-radius: 20px; font-weight: 600; white-space: nowrap; }
+    .high { background: #ffe0e0; color: #c0392b; }
+    .medium { background: #fff3e0; color: #e67e22; }
+    .low { background: #e8f5e9; color: #27ae60; }
+    a { color: #4a90e2; text-decoration: none; }
+    footer { text-align: center; color: #aaa; font-size: 0.82em; padding: 20px 0 10px; }
+  </style>
+</head>
+<body>
+  <header><h1>🤖 AI ニュースまとめ</h1><div class="date">2026年04月08日 | 国内 &amp; 世界のAI最新情報</div></header>
+  <div class="tab-container">
+    <button class="tab-btn domestic active" onclick="switchTab('domestic')">🇯🇵 国内ニュース</button>
+    <button class="tab-btn world" onclick="switchTab('world')">🌍 世界のニュース</button>
+  </div>
+  <div id="tab-domestic" class="tab-content active domestic-section">
+    <div class="summary-grid">
+      <div class="summary-card">
+        <strong>📊 今週のトピック</strong>
+        <p>Microsoft日本に1.6兆円投資発表、国内AIエージェント市場が「実行完結型」へ進化、日本初AI法が全面施行中</p>
+      </div>
+      <div class="summary-card">
+        <strong>🔥 注目の動向</strong>
+        <p>2026年Q1のAI関連投資が過去最高を記録、AIと人間が協働する「ハイブリッド組織」への移行が加速</p>
+      </div>
+    </div>
+
+    <div class="category-section">
+      <div class="category-title">🧠 モデル技術</div>
+      <details>
+        <summary><span>Google Gemma 4がApache 2.0ライセンスでリリース</span><span class="badge high">高</span></summary>
+        <div class="detail-content">
+          Google DeepMindが4月2日にGemma 4をリリース。31Bモデルがオープンモデルの中でArena AI第3位にランクイン。Apache 2.0ライセンスにより商用利用が自由に。140以上の言語に対応し、256Kコンテキストウィンドウを搭載。日本のAndroid端末でもオンデバイス推論が可能。
+          <br><a href="https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/" target="_blank">🔗 Google公式ブログ</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>AIエージェントの進化 - MCPとA2Aプロトコル</span><span class="badge high">高</span></summary>
+        <div class="detail-content">
+          ガートナージャパンが発表した2026年の戦略的テクノロジートレンドに「マルチエージェント・システム」が選出。A2A（Agent-to-Agent）とMCP（Model Context Protocol）がエージェント連携の基盤技術として注目を集めている。
+          <br><a href="https://www.cio.com/article/4106859/" target="_blank">🔗 CIO.com</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>LLMを活用した高次脳機能障害支援が本格化</span><span class="badge medium">中</span></summary>
+        <div class="detail-content">
+          2026年4月施行の高次脳機能障害者支援法に合わせ、大規模言語モデルを活用したAIエージェントが支援現場に導入開始。VRを用いた認知リハビリテーションも臨床現場で高い効果を上げている。
+          <br><a href="https://note.com/cognitive_01/n/nc641d6ebc968" target="_blank">🔗 Note記事</a>
+        </div>
+      </details>
+    </div>
+
+    <div class="category-section">
+      <div class="category-title">💼 ビジネス</div>
+      <details>
+        <summary><span>Microsoft、日本に100億ドル（約1.6兆円）投資を発表</span><span class="badge high">高</span></summary>
+        <div class="detail-content">
+          4月3日、Microsoftが日本に対して2026年から2029年までの4年間で約1.6兆円規模の投資を発表。AIインフラストラクチャ、サイバーセキュリティ、人材育成の3つが柱となる。
+          <br><a href="https://note.com/hirokimiyano/n/n1d86642b3d39" target="_blank">🔗 AIニュース詳細</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>国内AIエージェント市場が「実行完結型」へ進化</span><span class="badge high">高</span></summary>
+        <div class="detail-content">
+          RPA連携による業務自動化、情シスや顧客対応の実作業代行、MCPを軸にした外部ツール接続が進む。「回答支援」から「実行完結」へ、「単体導入」から「統合運用」へと市場が変化。
+          <br><a href="https://note.com/yasuhitoo/n/nb8f98f6b0764" target="_blank">🔗 国内AIエージェント動向</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>キャスター、「AI社員」サービスを5月より提供開始</span><span class="badge medium">中</span></summary>
+        <div class="detail-content">
+          キャスターが企業の業務を自律的に遂行するAIエージェントサービス「AI社員」を2026年5月より順次提供開始予定。チャット・メール対応から経理代行・資料作成まで専門業務に特化したチューニングも可能。
+          <br><a href="https://note.com/yasuhitoo/n/nb8f98f6b0764" target="_blank">🔗 詳細情報</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>マネーフォワード「Admina AIヘルプデスク」を5月提供開始</span><span class="badge medium">中</span></summary>
+        <div class="detail-content">
+          マネーフォワードiが情シス向けAIエージェントサービス『Admina AIヘルプデスク』を2026年5月より提供開始予定。パスワードリセット・各種申請・アカウント発行といった実作業までAIエージェントが自律遂行。
+          <br><a href="https://note.com/yasuhitoo/n/nb8f98f6b0764" target="_blank">🔗 プレスリリース</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>NTTデータとINSEADがAI時代の人材変革レポートを発表</span><span class="badge medium">中</span></summary>
+        <div class="detail-content">
+          NTTデータグループとビジネススクールのINSEADによる最新の研究報告では、これからの企業は「AIと人間が協働するハイブリッド組織」への進化が不可欠であると指摘。
+          <br><a href="https://note.com/notememodesu/n/nef24acb9bb13" target="_blank">🔗 レポート詳細</a>
+        </div>
+      </details>
+    </div>
+
+    <div class="category-section">
+      <div class="category-title">⚖️ 規制政策</div>
+      <details>
+        <summary><span>日本初のAI法が全面施行中 - AI戦略本部設置</span><span class="badge high">高</span></summary>
+        <div class="detail-content">
+          2025年6月に公布・施行された「人工知能関連技術の研究開発及び活用の推進に関する法律（AI法）」が全面施行中。全閣僚で構成し首相が本部長を務めるAI戦略本部を設置。罰則規定はなく企業の自主性を尊重。
+          <br><a href="https://arakiplaw.com/insight/2658/" target="_blank">🔗 法律解説</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>EU AI法の日本企業への影響 - 2026年適用開始</span><span class="badge high">高</span></summary>
+        <div class="detail-content">
+          EU AI Actが2026年から段階的に適用開始。EU域内にサービス・商品提供をする日本企業も対象となり、違反した場合は世界年間売上高の最大7%の罰金が科される可能性。
+          <br><a href="https://faportal.deloitte.jp/institute/report/articles/001326" target="_blank">🔗 デロイトトーマツ解説</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>生成AIと知的財産のプリンシプル・コード策定へ</span><span class="badge medium">中</span></summary>
+        <div class="detail-content">
+          内閣府知的財産戦略推進事務局が「生成AIの適切な利活用等に向けた知的財産の保護及び透明性に関するプリンシプル・コード（案）」を公表。開発者・提供者に対し透明性確保や著作権保護を中心とした行動原則を示す。
+          <br><a href="https://arakiplaw.com/insight/2658/" target="_blank">🔗 詳細</a>
+        </div>
+      </details>
+    </div>
+
+    <div class="category-section">
+      <div class="category-title">🔧 製品ツール</div>
+      <details>
+        <summary><span>Cursor 3リリース - エージェントファーストの新インターフェース</span><span class="badge high">高</span></summary>
+        <div class="detail-content">
+          4月2日、AIコーディングツール「Cursor」の開発元Anysphere社がCursor 3を正式リリース。コードベースを完全にゼロから書き直した事実上の新製品。複数のAIエージェントを並列実行可能に。月額20ドルで提供。
+          <br><a href="https://cursor.com/blog/cursor-3" target="_blank">🔗 公式ブログ</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>Claude Codeの年間売上が25億ドル突破</span><span class="badge high">高</span></summary>
+        <div class="detail-content">
+          Anthropicのclaude Codeが2026年2月時点で年間売上25億ドルを突破。ローンチからわずか6ヶ月で10億ドルに到達し、ChatGPTより速いペースで成長。Netflix、Spotify、Salesforceなど大手企業が採用。
+          <br><a href="https://orbilontech.com/claude-code-1b-revenue-ai-coding-revolution-2026/" target="_blank">🔗 詳細レポート</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>テスラ「Optimus」ヒューマノイドロボット量産化へ</span><span class="badge medium">中</span></summary>
+        <div class="detail-content">
+          テスラが「Optimus」ヒューマノイドロボットの量産に向けて大きく舵を切る。物流現場や製造ラインでAIを搭載したロボットが自律的に動くための技術が飛躍的に向上。LLMと組み合わせて自然言語で指示を理解。
+          <br><a href="https://note.com/notememodesu/n/nef24acb9bb13" target="_blank">🔗 記事詳細</a>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div id="tab-world" class="tab-content world-section">
+    <div class="summary-grid">
+      <div class="summary-card">
+        <strong>📊 今週のトピック</strong>
+        <p>OpenAI Sora終了、Google Gemma 4リリース、Microsoft新AIモデル3種発表、Anthropic時価総額380Bドル到達</p>
+      </div>
+      <div class="summary-card">
+        <strong>🔥 注目の動向</strong>
+        <p>2026年Q1のAI関連VC投資額が2970億ドルで過去最高、AIインフラ建設に7兆ドル必要との試算</p>
+      </div>
+    </div>
+
+    <div class="category-section">
+      <div class="category-title">🧠 モデル技術</div>
+      <details>
+        <summary><span>Anthropic「Claude Mythos 5」- 10兆パラメータモデル発表</span><span class="badge high">高</span></summary>
+        <div class="detail-content">
+          Anthropicが10兆パラメータの「Claude Mythos 5」をリリース。サイバーセキュリティ、学術研究、複雑なコーディング環境に特化。歴史的なマイルストーンとして注目を集める。
+          <br><a href="https://www.devflokers.com/blog/ai-news-last-24-hours-april-2026-model-releases-breakthroughs" target="_blank">🔗 DevFlokers詳細</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>OpenAI GPT-5.4「Thinking」バリアントがリリース</span><span class="badge high">高</span></summary>
+        <div class="detail-content">
+          GPT-5.4シリーズの「Thinking」バリアントがリリース。テスト時コンピュートを統合し、複雑な問題を「熟考」してから回答を出力。OSWorldベンチマークで75.0%を達成し、人間レベルの性能を超えた。
+          <br><a href="https://www.devflokers.com/blog/ai-news-last-24-hours-april-2026-model-releases-breakthroughs" target="_blank">🔗 詳細記事</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>Google TurboQuant - メモリ使用量を6分の1に削減</span><span class="badge high">高</span></summary>
+        <div class="detail-content">
+          Googleが「TurboQuant」効率化技術を発表。フロンティア性能を維持しながらメモリ要件を6分の1に削減。AI推論の経済的制約を書き換える可能性。
+          <br><a href="https://www.devflokers.com/blog/ai-news-last-24-hours-april-2026-model-releases-breakthroughs" target="_blank">🔗 技術詳細</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>Tufts大学 - AIエネルギー消費を100倍削減する技術</span><span class="badge medium">中</span></summary>
+        <div class="detail-content">
+          Tufts大学の研究者がニューラルネットワークと人間のようなシンボリック推論を組み合わせた手法を発表。AIのエネルギー使用を最大100倍削減しながら精度を向上させる画期的なアプローチ。
+          <br><a href="https://www.sciencedaily.com/releases/2026/04/260405003952.htm" target="_blank">🔗 ScienceDaily</a>
+        </div>
+      </details>
+    </div>
+
+    <div class="category-section">
+      <div class="category-title">💼 ビジネス</div>
+      <details>
+        <summary><span>OpenAI Soraアプリ終了 - 1日100万ドルのコスト負担</span><span class="badge high">高</span></summary>
+        <div class="detail-content">
+          OpenAIがAI動画生成ツール「Sora」を公開からわずか6ヶ月で終了。1日あたり約100万ドルのコストがかかる一方、累計売上は210万ドルに留まった。Disneyとの10億ドル提携も解消。
+          <br><a href="https://techcrunch.com/2026/03/29/why-openai-really-shut-down-sora/" target="_blank">🔗 TechCrunch詳細</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>Anthropic、380Bドル評価で300億ドル調達</span><span class="badge high">高</span></summary>
+        <div class="detail-content">
+          Anthropicが2026年2月に300億ドルのシリーズGラウンドを完了し、時価総額3,800億ドルに到達。世界第3位の非上場企業に。年間売上は140億ドルに達し、Claude Codeだけで25億ドル以上を占める。
+          <br><a href="https://orbilontech.com/anthropic-claude-code-valuation-2026/" target="_blank">🔗 バリュエーション詳細</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>Broadcom、GoogleとAnthropicとチップ契約拡大</span><span class="badge high">高</span></summary>
+        <div class="detail-content">
+          BroadcomがGoogleのAIチップ次世代版の製造契約を締結。Anthropicには約3.5ギガワット相当のコンピューティング容量を提供。2026年にAnthropicから210億ドル、2027年に420億ドルのAI売上を見込む。
+          <br><a href="https://www.cnbc.com/2026/04/06/broadcom-agrees-to-expanded-chip-deals-with-google-anthropic.html" target="_blank">🔗 CNBC記事</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>Microsoft、新AIモデル3種（MAI）を発表</span><span class="badge medium">中</span></summary>
+        <div class="detail-content">
+          4月2日、Microsoftが自社開発の新AIモデル3種を発表。MAI-Transcribe-1（音声認識）、MAI-Voice-1（音声生成）、MAI-Image-2（画像生成）。Microsoft Foundryで提供開始。
+          <br><a href="https://microsoft.ai/news/today-were-announcing-3-new-world-class-mai-models-available-in-foundry/" target="_blank">🔗 Microsoft AI公式</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>OpenAI、2026年Q4にIPOの可能性</span><span class="badge medium">中</span></summary>
+        <div class="detail-content">
+          OpenAIが2026年第4四半期に上場する可能性が報道。1220億ドルの資金調達後、CEOサム・アルトマンとCFOサラ・フライアーが自信を示す。
+          <br><a href="https://www.cryptointegrat.com/p/ai-news-april-7-2026" target="_blank">🔗 詳細レポート</a>
+        </div>
+      </details>
+    </div>
+
+    <div class="category-section">
+      <div class="category-title">⚖️ 規制政策</div>
+      <details>
+        <summary><span>ユタ州、全米初のAI処方箋更新プログラム開始</span><span class="badge high">高</span></summary>
+        <div class="detail-content">
+          ユタ州が全米初のAIによる処方箋更新パイロットプログラムを開始。Doctronicと提携し、慢性疾患患者向けに約200種類の一般的な薬の更新が可能に。4ドルで数分で完了。
+          <br><a href="https://commerce.utah.gov/2026/01/06/news-release-utah-and-doctronic-announce-groundbreaking-partnership-for-ai-prescription-medication-renewals/" target="_blank">🔗 ユタ州公式発表</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>米国各州でAI規制法が2026年1月から施行開始</span><span class="badge high">高</span></summary>
+        <div class="detail-content">
+          カリフォルニア州、テキサス州、コロラド州など複数の州でAI規制法が2026年1月から施行開始。トランプ政権は州法を連邦法で無効化する意向を示す大統領令を発令し、連邦vs州の対立が激化。
+          <br><a href="https://drata.com/blog/artificial-intelligence-regulations-state-and-federal-ai-laws-2026" target="_blank">🔗 規制詳細</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>EU AI法、2026年8月に全面適用予定</span><span class="badge high">高</span></summary>
+        <div class="detail-content">
+          EU AI Actが2026年8月に全面適用予定。禁止事項とGPAI（汎用AIモデル）義務は既に適用開始。違反した場合は最大3500万ユーロまたは世界年間売上高の7%の罰金。
+          <br><a href="https://www.ai-souken.com/article/ai-regulation-law-overview" target="_blank">🔗 AI総合研究所解説</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>TAKE IT DOWN Act - ディープフェイク対策の連邦法</span><span class="badge medium">中</span></summary>
+        <div class="detail-content">
+          2025年5月19日に署名されたTAKE IT DOWN Actにより、オンラインプラットフォームはAI生成のディープフェイクを含む非同意の親密な画像を報告から48時間以内に削除することが義務付け。2026年5月19日までに対応プロセスの構築が必要。
+          <br><a href="https://www.bakerbotts.com/thought-leadership/publications/2026/january/us-ai-law-update" target="_blank">🔗 法律解説</a>
+        </div>
+      </details>
+    </div>
+
+    <div class="category-section">
+      <div class="category-title">🔧 製品ツール</div>
+      <details>
+        <summary><span>Cursor 3 - エージェント並列実行とDesign Mode</span><span class="badge high">高</span></summary>
+        <div class="detail-content">
+          4月2日リリースのCursor 3は、複数のAIエージェントを並列実行可能。新しい「Agents Window」インターフェースとブラウザ上でUI要素を直接編集できる「Design Mode」を搭載。内部コード名「Glass」。
+          <br><a href="https://cursor.com/blog/cursor-3" target="_blank">🔗 Cursor公式</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>Telegram、オンデバイスAIメッセージエディタを搭載</span><span class="badge medium">中</span></summary>
+        <div class="detail-content">
+          Telegramの最新アップデートで、完全にプライベートなオンデバイスAIメッセージエディタを追加。ボットがボットを作成する機能や、12の新機能を含む強化された投票機能も搭載。
+          <br><a href="https://www.cryptointegrat.com/p/ai-news-april-7-2026" target="_blank">🔗 詳細情報</a>
+        </div>
+      </details>
+      <details>
+        <summary><span>中国AGIBOT、ヒューマノイドロボット1万台出荷達成</span><span class="badge medium">中</span></summary>
+        <div class="detail-content">
+          中国・上海のAGIBOTが2026年3月30日に累計1万台目のヒューマノイドロボットの出荷を発表。最初の1000台に約2年を要したのに対し、直近の5000台から1万台はわずか3ヶ月で達成。欧州・北米・日本・韓国へ展開中。
+          <br><a href="https://note.com/hirokimiyano/n/n64914b68
