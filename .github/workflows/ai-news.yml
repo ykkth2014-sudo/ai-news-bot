@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: リポジトリをチェックアウト
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Python セットアップ
         uses: actions/setup-python@v5
@@ -34,4 +36,7 @@ jobs:
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           MAIL_TO:            ${{ secrets.MAIL_TO }}
           GITHUB_REPOSITORY:  ${{ github.repository }}
-        run: python generate_news.py
+          GITHUB_TOKEN:       ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          python generate_news.py
