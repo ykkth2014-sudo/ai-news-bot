@@ -10,11 +10,15 @@ import anthropic
 CATEGORIES = ["モデル技術", "ビジネス", "規制政策", "製品ツール"]
 
 
-def _call_claude(client: anthropic.Anthropic, prompt: str) -> str:
-    """Claude API を呼び出してテキストを返す（web_search対応マルチターン）"""
+def _call_claude_with_search(client: anthropic.Anthropic, prompt: str) -> str:
+    """
+    web_search ツール付きで Claude を呼び出す（マルチターン対応）
+    tool_use → tool_result → end_turn のループを処理する
+    """
     messages = [{"role": "user", "content": prompt}]
+    MAX_TURNS = 10  # 無限ループ防止
 
-    while True:
+    for _ in range(MAX_TURNS):
         message = client.messages.create(
             model="claude-haiku-4-5-20251001",
             max_tokens=8192,
@@ -22,32 +26,53 @@ def _call_claude(client: anthropic.Anthropic, prompt: str) -> str:
             messages=messages
         )
 
-        # テキストブロックを収集
-        text = ""
-        for block in message.content:
-            if block.type == "text":
-                text += block.text
+        print(f"    [debug] stop_reason={message.stop_reason}, blocks={[b.type for b in message.content]}")
 
-        # stop_reason が "end_turn" ならテキストを返す
+        # アシスタントの応答を履歴に追加
+        messages.append({"role": "assistant", "content": message.content})
+
         if message.stop_reason == "end_turn":
+            # テキストブロックを結合して返す
+            text = ""
+            for block in message.content:
+                if block.type == "text":
+                    text += block.text
             return text
 
-        # web_search ツールが使われた場合はアシスタント応答を履歴に追加して続行
         if message.stop_reason == "tool_use":
-            messages.append({"role": "assistant", "content": message.content})
-            # tool_result を作成（web_search は Anthropic が自動実行するので内容は空でOK）
+            # tool_result を作成して次のターンへ
             tool_results = []
             for block in message.content:
                 if block.type == "tool_use":
                     tool_results.append({
                         "type": "tool_result",
                         "tool_use_id": block.id,
-                        "content": ""
+                        "content": ""  # web_search は Anthropic が自動実行
                     })
             messages.append({"role": "user", "content": tool_results})
         else:
-            # 予期しない stop_reason の場合はそのまま返す
+            # 予期しない stop_reason
+            text = ""
+            for block in message.content:
+                if block.type == "text":
+                    text += block.text
             return text
+
+    raise RuntimeError("_call_claude_with_search: MAX_TURNS に達しました")
+
+
+def _call_claude_simple(client: anthropic.Anthropic, prompt: str) -> str:
+    """web_search なしのシンプルな Claude 呼び出し"""
+    message = client.messages.create(
+        model="claude-haiku-4-5-20251001",
+        max_tokens=8192,
+        messages=[{"role": "user", "content": prompt}]
+    )
+    text = ""
+    for block in message.content:
+        if block.type == "text":
+            text += block.text
+    return text
 
 
 def _parse_json(text: str) -> dict:
@@ -55,14 +80,17 @@ def _parse_json(text: str) -> dict:
     if not text or text.strip() == "":
         raise ValueError("APIからのレスポンスが空です。APIキーやレート制限を確認してください。")
 
+    print(f"    [debug] _parse_json 受信テキスト先頭200字: {repr(text[:200])}")
+
     if "```json" in text:
         text = text.split("```json")[1].split("```")[0].strip()
     elif "```" in text:
         text = text.split("```")[1].split("```")[0].strip()
-    # JSON部分だけ抽出（{ から始まる部分）
+
     start = text.find("{")
     if start != -1:
         text = text[start:]
+
     return json.loads(text)
 
 
@@ -100,21 +128,14 @@ URL: {url}
 記事本文:
 {article_text}
 """
-    message = client.messages.create(
-        model="claude-haiku-4-5-20251001",
-        max_tokens=512,
-        messages=[{"role": "user", "content": prompt}]
-    )
-    for block in message.content:
-        if block.type == "text":
-            return block.text.strip()
-    return ""
+    return _call_claude_simple(client, prompt)
 
 
 def fetch_news(client: anthropic.Anthropic, region: str, today: str) -> dict:
     """
     指定地域のニュースをJSON形式で取得する
     region: "domestic"（国内）または "world"（世界）
+    まず web_search 付きで試み、失敗したら web_search なしにフォールバック
     """
     if region == "domestic":
         region_desc = "日本国内"
@@ -124,7 +145,7 @@ def fetch_news(client: anthropic.Anthropic, region: str, today: str) -> dict:
         exclude = "日本のニュースは除外し、海外のニュースのみを対象としてください。"
 
     prompt = f"""あなたは優秀なAIニュースキュレーターです。
-今日（{today}）の{region_desc}の最新AIニュースをウェブ検索で調査してください。
+今日（{today}）の{region_desc}の最新AIニュースを調査してください。
 {exclude}
 
 以下の4カテゴリで合計10件以上のニュースをJSON形式で出力してください。
@@ -152,9 +173,15 @@ importanceは「高」「中」「低」のいずれか。
 URLは実在するものを必ず記載すること。
 """
 
-    print(f"  [{region}] ニュース一覧を取得中...")
-    text = _call_claude(client, prompt)
-    data = _parse_json(text)
+    print(f"  [{region}] ニュース一覧を取得中（web_search あり）...")
+    try:
+        text = _call_claude_with_search(client, prompt)
+        data = _parse_json(text)
+    except Exception as e:
+        print(f"  [{region}] web_search あり失敗: {e}")
+        print(f"  [{region}] web_search なしでリトライ中...")
+        text = _call_claude_simple(client, prompt)
+        data = _parse_json(text)
 
     # 各記事の本文を取得して要約
     for category in data["categories"]:
