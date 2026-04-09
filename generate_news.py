@@ -1,18 +1,16 @@
 #!/usr/bin/env python3
 """
 generate_news.py - AI ニュースまとめ自動生成（メインスクリプト）
-
 実行フロー:
   1. fetcher  : 国内・世界のニュースを収集し、各記事を要約
   2. builder  : HTML レポートを生成
   3. publisher: GitHub Pages に公開
   4. mailer   : メールでリンクを送信
 """
-
 import os
+import sys
 import anthropic
 from datetime import datetime, timezone, timedelta
-
 import fetcher
 import builder
 import publisher
@@ -30,18 +28,24 @@ MAIL_TO            = os.environ["MAIL_TO"]
 GITHUB_REPOSITORY  = os.environ.get("GITHUB_REPOSITORY", "")
 # ─────────────────────────────────────────────────────
 
-
 def main():
     print(f"=== AI ニュースまとめ生成開始 {TODAY} ===")
-
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
     # Step 1: ニュース収集・記事要約
     print("\n[Step 1] 国内ニュースを収集・要約中...")
-    domestic = fetcher.fetch_news(client, "domestic", TODAY)
+    try:
+        domestic = fetcher.fetch_news(client, "domestic", TODAY)
+    except Exception as e:
+        print(f"  [ERROR] 国内ニュース取得失敗: {e}", file=sys.stderr)
+        raise
 
     print("\n[Step 1] 世界のニュースを収集・要約中...")
-    world = fetcher.fetch_news(client, "world", TODAY)
+    try:
+        world = fetcher.fetch_news(client, "world", TODAY)
+    except Exception as e:
+        print(f"  [ERROR] 世界ニュース取得失敗: {e}", file=sys.stderr)
+        raise
 
     # Step 2: HTML生成
     print("\n[Step 2] HTMLレポートを生成中...")
@@ -57,7 +61,6 @@ def main():
 
     print(f"\n=== 完了 ===")
     print(f"レポートURL: {page_url}")
-
 
 if __name__ == "__main__":
     main()
