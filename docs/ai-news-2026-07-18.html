@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI ニュースまとめ - 2026年07月18日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; max-width: 960px; margin: 0 auto; padding: 20px; background: #f0f2f5; }
+    header { background: linear-gradient(135deg, #1a1a2e, #0f3460); color: white; padding: 36px 32px; border-radius: 16px; margin-bottom: 28px; }
+    h1 { font-size: 1.9em; }
+    .date { opacity: 0.75; margin-top: 6px; }
+    .tab-container { display: flex; margin-bottom: 24px; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .tab-btn { flex: 1; padding: 16px; border: none; cursor: pointer; font-size: 1.05em; font-weight: 700; background: white; color: #888; transition: all 0.2s; }
+    .tab-btn.active.domestic { background: #e74c3c; color: white; }
+    .tab-btn.active.world { background: #2980b9; color: white; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .summary-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin-bottom: 24px; }
+    .summary-card { background: white; border-radius: 12px; padding: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-left: 4px solid #e74c3c; }
+    #tab-world .summary-card { border-left-color: #2980b9; }
+    .summary-card strong { display: block; margin-bottom: 5px; font-size: 0.95em; }
+    .summary-card p { font-size: 0.85em; color: #555; line-height: 1.5; }
+    .category-section { background: white; border-radius: 14px; padding: 22px; margin-bottom: 18px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .category-title { font-size: 1.2em; font-weight: 700; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid #f0f2f5; }
+    details { border: 1px solid #e8e8e8; border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+    summary { padding: 13px 16px; cursor: pointer; font-weight: 600; font-size: 0.92em; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    summary::-webkit-details-marker { display: none; }
+    summary:hover { background: #fafafa; }
+    summary::after { content: "▼"; font-size: 0.7em; color: #aaa; }
+    details[open] summary::after { content: "▲"; }
+    .detail-content { padding: 16px 18px; border-top: 1px solid #f0f0f0; color: #444; line-height: 1.75; font-size: 0.9em; }
+    .badge { font-size: 0.7em; padding: 3px 9px; border-radius: 20px; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
+    .high { background: #ffe0e0; color: #c0392b; }
+    .medium { background: #fff3e0; color: #e67e22; }
+    .low { background: #e8f5e9; color: #27ae60; }
+    a { color: #4a90e2; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer { text-align: center; color: #aaa; font-size: 0.82em; padding: 20px 0 10px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🤖 AI ニュースまとめ</h1>
+    <div class="date">2026年07月18日 | 国内 &amp; 世界のAI最新情報</div>
+  </header>
+  <div class="tab-container">
+    <button class="tab-btn domestic active" onclick="switchTab('domestic')">🇯🇵 国内ニュース</button>
+    <button class="tab-btn world" onclick="switchTab('world')">🌍 世界のニュース</button>
+  </div>
+  <div id="tab-domestic" class="tab-content active">
+    <div class="summary-grid">
+        <div class="summary-card">
+          <strong>モデル技術</strong>
+          <p>国産LLMやマルチモーダルモデルの開発が急速に進展。Rakuten AI 3.0やELYZA Brain、NTTのtsuzumiなど複数企業による大規模言語モデル開発が実現されている。</p>
+        </div>
+        <div class="summary-card">
+          <strong>ビジネス</strong>
+          <p>ソフトバンクがOpenAIに1兆6,300億円追加出資を完了。AI市場規模は2026年時点で約2.1兆円に達する見通しで、大手企業からスタートアップまで多様なAIソリューション展開が進展している。</p>
+        </div>
+        <div class="summary-card">
+          <strong>規制政策</strong>
+          <p>2025年9月に「AI推進法」全面施行。罰則なしのガイドラインベース設計で、イノベーション促進と安全性確保を両立。2026年から総務省がNICTでAI基盤システム開発を開始予定。</p>
+        </div>
+        <div class="summary-card">
+          <strong>製品ツール</strong>
+          <p>AIエージェント、チャットボット、業務自動化ツールなど実務的なAIソリューションが次々と提供開始。医療AI、営業支援、カスタマーサポート、文書処理など業界別特化型サービスが拡充している。</p>
+        </div></div>
+        <div class="category-section">
+          <div class="category-title" style="color:#e74c3c">📁 モデル技術</div>
+          <details>
+            <summary>楽天グループがRakuten AI 3.0を3月に提供開始、7000億パラメータ規模のMoEアーキテクチャ採用 <span class="badge high">高</span></summary>
+            <div class="detail-content">
+              <p>記事本文の取得に失敗しました。</p>
+              <p style="margin-top:10px"><a href="https://go2senkyo.com/seijika/166293/posts/1352810" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>NTTのtsuzumi 2がデジタル庁のガバメントAI試用対象に選定 <span class="badge high">高</span></summary>
+            <div class="detail-content">
+              <p>記事本文の取得に失敗しました。</p>
+              <p style="margin-top:10px"><a href="https://go2senkyo.com/seijika/166293/posts/1352810" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>SB IntuitionsがSarashina2.2-Visionなど視覚能力備えたマルチモーダルモデル開発進行 <span class="badge medium">中</span></summary>
+            <div class="detail-content">
+              <p>記事本文の取得に失敗しました。</p>
+              <p style="margin-top:10px"><a href="https://go2senkyo.com/seijika/166293/posts/1352810" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>サイバーエージェントがCyberAgentLM2リリース、70億パラメータで日本語・英語処理対応 <span class="badge high">高</span></summary>
+            <div class="detail-content">
+              <p>申し訳ございませんが、提供いただいた記事本文がメニューやナビゲーション要素のみで、実際の記事の本文内容が含まれていないため、要約することができません。記事の本文部分をご提供いただければ、要約させていただきます。</p>
+              <p style="margin-top:10px"><a href="https://aismiley.co.jp/ai_news/japanese-made-generative-ai/" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details></div>
+        <div class="category-section">
+          <div class="category-title" style="color:#e74c3c">📁 ビジネス</div>
+          <details>
+            <summary>ソフトバンクがOpenAIへ1兆6,300億円追加出資完了、10月にも第3弾1兆円規模の出資予定 <span class="badge high">高</span></summary>
+            <div class="detail-content">
+              <p>ソフトバンクグループがOpenAIへ1兆6,300億円の追加出資を完了し、さらに10月に第3弾として1兆円規模の出資を予定しており、日本のAIエコシステムの強化が進んでいます。これに加え、AnthropicのClaudeがグローバル展開を再開し、Googleが70言語以上対応のリアルタイム音声翻訳機能やローカル実行可能なAIモデルをリリースするなど、AI業界全体で大規模な投資と技術進展が相次いでいます。一方、国連はAI開発の危険性を警告してガバナンス委員会を設立し、国際的なAI規制の枠組み整備が急速に進んでいます。</p>
+              <p style="margin-top:10px"><a href="https://bizfreak.co.jp/blog/g0wtbod44" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>国内AIシステム市場が2024年1兆3412億円から2026年約2.1兆円へ拡大予測 <span class="badge high">高</span></summary>
+            <div class="detail-content">
+              <p>記事本文の取得に失敗しました。</p>
+              <p style="margin-top:10px"><a href="https://go2senkyo.com/seijika/166293/posts/1352810" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>GENIACY-PRIZEでNTT西日本などが官公庁向けAIと安全性向上で評価獲得 <span class="badge medium">中</span></summary>
+            <div class="detail-content">
+              <p>記事本文の取得に失敗しました。</p>
+              <p style="margin-top:10px"><a href="https://go2senkyo.com/seijika/166293/posts/1352810" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>ELYZAが東京大学松尾研発で日本語LLM開発をリード、KDDIとの資本業務提携で大型モデル開発進行 <span class="badge medium">中</span></summary>
+            <div class="detail-content">
+              <p>ELYZAは東京大学松尾研と連携して日本語特化の大規模言語モデル（LLM）開発をリードしており、KDDIとの資本業務提携により大型モデル開発が進行中です。ELYZAは自然な日本語生成・要約・対話に強みを持つ基盤モデル開発型のAIスタートアップであり、国産の高品質なAIモデルを活用した事業創出の有力な選択肢となっています。DXの加速に伴い、ベンチャー企業ならではの柔軟な実装力を活かしたAIスタートアップの成長が著しく、業種ごとに最適なAI導入が進展しています。</p>
+              <p style="margin-top:10px"><a href="https://www.aidma-hd.jp/ai/ai-start-up-company/" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>アニメ特化動画生成AI「AnimeGen」がAIdeaLabから無償公開、商用利用も可能 <span class="badge medium">中</span></summary>
+            <div class="detail-content">
+              <p>アニメ特化動画生成AI「AnimeGen」が、国内AIベンチャーのAIdeaLabから無償で公開されました。このAIは商用利用も可能となっており、アニメ制作業界での活用が期待されています。</p>
+              <p style="margin-top:10px"><a href="https://www.itmedia.co.jp/aiplus/subtop/news" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details></div>
+        <div class="category-section">
+          <div class="category-title" style="color:#e74c3c">📁 規制政策</div>
+          <details>
+            <summary>人工知能推進法が2025年9月全面施行、イノベーション促進重視で罰則規定なし <span class="badge high">高</span></summary>
+            <div class="detail-content">
+              <p>日本政府は2025年5月に「人工知能推進法」を成立させ、2025年9月に全面施行されます。この法律はEUの厳格な規制とは異なり、イノベーション促進を主目的とした罰則規定のない法律です。日本は「イノベーション促進」と「リスク対応」の両立を基本方針とし、ソフトロー中心からハードローの要素を部分的に取り入れたハイブリッドなアプローチへ移行しています。企業は著作権侵害、情報漏洩、AIガバナンスの3つのリスク対策が求められます。</p>
+              <p style="margin-top:10px"><a href="https://a-x.inc/blog/ai-regulation/" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>AI事業者ガイドライン第1.1版公表、安全性・公平性・プライバシー保護を柱に自主ガバナンス促進 <span class="badge high">高</span></summary>
+            <div class="detail-content">
+              <p>日本政府は生成AIの「イノベーション促進」と「リスク対応」の両立を基本方針とし、2025年5月に「AI推進法」を成立させました。企業は著作権侵害、情報漏洩、偽情報拡散などのリスクから身を守るため、従来のソフトロー中心から部分的にハードロー要素も含むハイブリッドなガバナンスアプローチが求められています。2025年はEUの包括的AI法が本格運用を開始し「AI規制元年」となり、世界的にAIの安全かつ信頼できる社会実現に向けた規制強化が加速しています。</p>
+              <p style="margin-top:10px"><a href="https://a-x.inc/blog/ai-regulation/" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>総務省が2026年からNICTで生成AIの信頼性・安全性評価するAI基盤システム開発開始 <span class="badge medium">中</span></summary>
+            <div class="detail-content">
+              <p>総務省が2026年からNICT（情報通信研究機構）において生成AIの信頼性・安全性を評価するAI基盤システムの開発を開始する。この取組は、2025年下半期における世界各国のAI規制動向の一部である。日本政府は生成AIの適切な利用と安全性確保に向けた基盤整備を進めている。</p>
+              <p style="margin-top:10px"><a href="https://kpmg.com/jp/ja/insights/2026/02/2025secondhalf-world-ai-regulation.html" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>内閣府が「生成AIの知的財産保護及び透明性に関するプリンシプル・コード案」公表、2026年運用開始へ <span class="badge medium">中</span></summary>
+            <div class="detail-content">
+              <p>内閣府が生成AIの知的財産保護と透明性に関するプリンシプル・コード案を公表し、2026年の運用開始を予定している。EU AI Actは2026年8月に全面適用されるため、日本企業も対応が必要となる。日本のAI事業者ガイドラインは法的強制力がないが、将来の法制化を見据えた準拠が求められている。企業は自社AIシステムのリスク分類、AIガバナンス体制の構築、透明性と説明責任の確保に取り組む必要がある。生成AIの著作権問題は判例が確定していないため、学習データの利用範囲を明文化してリスク管理すべきである。</p>
+              <p style="margin-top:10px"><a href="https://www.ai-souken.com/article/ai-regulation-law-overview" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>人工知能基本計画（第Ⅱ期）が7月14日に閣議決定、2026年度からAI・先端ロボット分野重点支援 <span class="badge high">高</span></summary>
+            <div class="detail-content">
+              <p>政府は2026年7月14日に「人工智能基本計画（第Ⅱ期）」を閣議決定した。本計画は2026年度からAI・先端ロボット分野を重点的に支援するもので、AI関連技術の研究開発と活用を推進する方針を示している。内閣府では人工知能戦略本部や専門調査会などを設置し、関係省庁と連携してAI戦略を進めており、毎年度のAI関連予算を確保してこの取組を支えている。</p>
+              <p style="margin-top:10px"><a href="https://www8.cao.go.jp/cstp/ai/index.html" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details></div>
+        <div class="category-section">
+          <div class="category-title" style="color:#e74c3c">📁 製品ツール</div>
+          <details>
+            <summary>デジタル庁がtsuzumiなど国産AIを「さくらのクラウド」で稼働、日本の自律性確保 <span class="badge high">高</span></summary>
+            <div class="detail-content">
+              <p>申し訳ございませんが、提供していただいた内容はITmedia AI＋のナビゲーションページやニュース一覧であり、「デジタル庁がtsuzumiなど国産AIを『さくらのクラウド』で稼働、日本の自律性確保」という記事本文が含まれていません。正確な要約を作成するために、実際の記事本文をご提供いただけますようお願いいたします。</p>
+              <p style="margin-top:10px"><a href="https://www.itmedia.co.jp/aiplus/subtop/news" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>OpenAIのリアルタイム音声モデル「GPT-Live」公開、より人間らしい会話実現 <span class="badge medium">中</span></summary>
+            <div class="detail-content">
+              <p>申し訳ございませんが、提供していただいたテキストには記事の本文が含まれていません。提示されているのはITmedia AI+のポータルページのナビゲーション要素とニュース見出しの一覧のみです。タイトルの「OpenAIのリアルタイム音声モデル『GPT-Live』公開」に関する具体的な記事本文がないため、要約を作成することができません。記事の本文をご提供いただければ、3〜5文での要約を作成させていただきます。</p>
+              <p style="margin-top:10px"><a href="https://www.itmedia.co.jp/aiplus/subtop/news" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>M365 CopilotにOpenAI最新モデル「GPT-5.6」追加、複雑な作業より効率的に処理 <span class="badge medium">中</span></summary>
+            <div class="detail-content">
+              <p>申し訳ありませんが、提供いただいたのはメディアのトップページ構成のようで、「M365 CopilotにOpenAI最新モデル『GPT-5.6』追加」に関する具体的な記事本文が含まれていません。記事の本文内容がないため、要約することができません。記事本文をご提供いただければ、要約いたします。</p>
+              <p style="margin-top:10px"><a href="https://www.itmedia.co.jp/aiplus/subtop/news" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>NECの日本語特化型生成AI「cotomi」が代表的商用LLM比べ約2倍の処理速度実現 <span class="badge medium">中</span></summary>
+            <div class="detail-content">
+              <p>NECが開発した日本語特化型生成AI「cotomi」は、代表的な商用LLMと比較して約2倍の処理速度を実現しています。複雑な日本語のニュアンスを正確に理解し、適切な回答を生成する高い日本語処理能力が特徴です。オンプレミスやパブリッククラウドなど、企業の環境に合わせた柔軟な提供形態が選択でき、スピーディーかつ正確な日本語でのAI活用を求める企業に適しています。</p>
+              <p style="margin-top:10px"><a href="https://shift-ai.co.jp/blog/15414/" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>カサナレの「kasanare」が企業向けカスタマイズ型生成AIサービス提供、顧客対応自動化に対応 <span class="badge medium">中</span></summary>
+            <div class="detail-content">
+              <p>カサナレの「kasanare」は、企業向けのカスタマイズ型生成AIサービスを提供しており、顧客対応の自動化に対応している。本記事は2026年最新の注目国産AI12選を紹介するもので、ChatGPTやGeminiなどの海外製AIと異なり、日本特有のビジネス慣習や文化を理解し日本人が使いやすいように設計されている国産AIの魅力を解説している。大手企業からスタートアップまでさまざまな分野で活用できる国産AIが厳選して紹介されており、導入を成功させるための5つの重要なポイントについても説明されている。記事ではNEC、富士通、NTT、サイバーエージェントなど大手企業が開発した国産AIの特徴が比較表で示されている。</p>
+              <p style="margin-top:10px"><a href="https://shift-ai.co.jp/blog/15414/" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>富士通の「Fujitsu Kozuchi」が7領域カバーする総合AIプラットフォーム提供、業務特化型設計 <span class="badge medium">中</span></summary>
+            <div class="detail-content">
+              <p>ChatGPTなどの海外産AIが注目される一方で、日本のビジネスシーンでは国産AIへのニーズが根強く存在しています。記事では、大手企業からベンチャーまで注目の国産AI12選を紹介しており、富士通の「Fujitsu Kozuchi」は7つのAI領域をカバーする総合AIプラットフォームとして、業務特化型に設計されています。国産AIは日本特有のビジネス慣習や文化を理解し、日本人が使いやすいように設計されている点が魅力で、他社に先駆けて導入すれば業務効率化や新たな価値創造につながります。記事では導入成功のための5つの重要ポイントや、プロンプト150選などの実践的な資料も提供されています。</p>
+              <p style="margin-top:10px"><a href="https://shift-ai.co.jp/blog/15414/" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details></div>
+  </div>
+  <div id="tab-world" class="tab-content">
+    <div class="summary-grid">
+        <div class="summary-card">
+          <strong>モデル技術</strong>
+          <p>大規模言語モデルの継続的な高度化、特にマルチモーダル能力と推論性能の向上が加速している。エージェント型AIやメモリ拡張技術の実装が進む。</p>
+        </div>
+        <div class="summary-card">
+          <strong>ビジネス</strong>
+          <p>AI企業への投資集中が続き、2026年上半期ではUS企業が全体の88%のAI関連ファンディングを占有。エンタープライズAI採用がクエスチョンレベルから本格展開へ移行。</p>
+        </div>
+        <div class="summary-card">
+          <strong>規制政策</strong>
+          <p>EU AI Actの2026年8月の完全施行、米国の州レベル規制の拡大、中国の厳格な内容統制。三極分化の規制環境が企業のコンプライアンス要件を複雑化させている。</p>
+        </div>
+        <div class="summary-card">
+          <strong>製品ツール</strong>
+          <p>Google Gemini、Claude各種、ChatGPT、Cursorなどのエージェント型AIツールの急速な進化。プロダクティビティアプリとの統合が深まり、スペシャライズドエージェントが急増中。</p>
+        </div></div>
+        <div class="category-section">
+          <div class="category-title" style="color:#2980b9">📁 モデル技術</div>
+          <details>
+            <summary>Claude Sonnet 5とFable 5のグローバル復帰 - 米国商務省が輸出規制を解除 <span class="badge high">高</span></summary>
+            <div class="detail-content">
+              <p>2026年7月3日のAIニュースで、Fable 5が米国商務省の輸出規制解除により19日間の停止後にグローバルに復帰した。Fable 5の復帰に伴い、Amazon研究者が発見したジailbreak技術を99%以上ブロックする新しい安全分類器が導入されたが、正当なコード質問の一部も誤ブロックされるようになった。また、Fable 5の請求体系も変更され、7月7日から新しい料金体系が適用される予定である。</p>
+              <p style="margin-top:10px"><a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-3-2026" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>Google Gemini 3.5 Pro - 2M トークンコンテキストウィンドウとディープシンク推論機能搭載 <span class="badge high">高</span></summary>
+            <div class="detail-content">
+              <p>Google Gemini 3.5 Proは2024年7月の複数の延期を経て、2M トークンのコンテキストウィンドウとディープシンク推論機能を搭載して開発が進められています。一方、TSMCは第2四半期に77.4%の利益成長を達成し、AI チップが四半期売上の66%を占めるなど、AI ハードウェア産業の急速な拡大が続いています。Gemini 3.5 Pro の遅延に対応して Google は Gemini 3.6 Flash の検討を開始するなど、各企業の AI 競争が激化しています。</p>
+              <p style="margin-top:10px"><a href="https://aitoolsrecap.com/Blog/AINewsJuly2026.aspx" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>OpenAI GPT-5.4のネイティブコンピュータ使用機能 - 自動的にウェブ操作とマルチステップワークフローを実行 <span class="badge high">高</span></summary>
+            <div class="detail-content">
+              <p>OpenAIのGPT-5.4は2026年初頭にリリースされ、コンピュータを自動的に操作してウェブ閲覧やフォーム入力、複雑なマルチステップワークフローを実行できるネイティブコンピュータ使用機能を搭載した。GoogleのGemini 3.1 Proは抽象的推論ベンチマークで最高スコアを達成し、研究および科学応用に最適な選択肢となっている。AnthropicのClaude 4.6ファミリーはソフトウェアエンジニアリングタスクでGPT-5.4を上回り、複雑なコーディングと長文脈推論でリードしている。</p>
+              <p style="margin-top:10px"><a href="https://unitymedianews.com/2026/05/23/latest-ai-breakthroughs-in-2026/" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>マルチモーダルAIが標準化 - テキスト、画像、音声、動画のネイティブ処理が基本仕様に <span class="badge medium">中</span></summary>
+            <div class="detail-content">
+              <p>2026年7月のAI業界は、実用的なツールの進化と規制強化が同時に進んだ。Claude Sonnet 5やGemini Omni Flash などの新モデルが登場し、コーディングやビデオ編集などの日常業務での活用が加速した。一方で、AIシステムへのアクセスはID認証やクレジット制度など制限が強化され、大規模な計算リソース取引も進行している。企業がAIツールを導入・運用する際には、モデルの性能だけでなく、アクセス可能性、コスト、規制への対応が重要な検討項目となった。</p>
+              <p style="margin-top:10px"><a href="https://www.aiapps.com/blog/top-ai-news-july-breakthroughs-launches-trends/" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details></div>
+        <div class="category-section">
+          <div class="category-title" style="color:#2980b9">📁 ビジネス</div>
+          <details>
+            <summary>xAI Series E ラウンド 200億ドル調達 - SpaceX IPO連携でAI競争が加速 <span class="badge high">高</span></summary>
+            <div class="detail-content">
+              <p>xAIがシリーズEラウンドで200億ドルを調達し、SpaceXのIPO連携によってAI市場の競争が加速している。記事ではLucydスマートアイウェアへのClaude AI統合など、2026年5月〜7月の最新AI技術革新と業界動向を網羅している。ユーザーはClaudeとChatGPTを自由に切り替え、会話内容を保持したまま利用できるなど、AIアシスタント機能が拡充している。ヘルスケア、小売、金融など複数産業でのAI活用が急速に進展している。</p>
+              <p style="margin-top:10px"><a href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>グローバルVC投資 2026年上半期でUS企業が全AI資金の88%を獲得 <span class="badge high">高</span></summary>
+            <div class="detail-content">
+              <p>申し訳ございませんが、提供いただいた記事本文がナビゲーションメニューやリンク集のみで、実際の記事内容が含まれていないため、要約することができません。記事の本文内容をお教えいただければ、要約させていただきます。</p>
+              <p style="margin-top:10px"><a href="https://news.crunchbase.com/venture/us-ai-startup-funding-boom-data/" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>NVIDIA と SK hynix の多年次技術パートナーシップ - 次世代AIメモリ開発 <span class="badge medium">中</span></summary>
+            <div class="detail-content">
+              <p>NVIDIA とSK hynixが次世代AIメモリ開発のための多年次技術パートナーシップを構築しました。このパートナーシップでは、最先端のメモリソリューションの開発に協力し、AI産業の発展を加速させることを目指しています。両社の協力により、AIシステムの性能向上とメモリ効率化が期待されています。</p>
+              <p style="margin-top:10px"><a href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>エンタープライズAI採用率が過去最高に - McKinsey調査で過半数の企業がAIを導入 <span class="badge medium">中</span></summary>
+            <div class="detail-content">
+              <p>2026年7月、エンタープライズAIの採用率が過去最高に達し、McKinsey調査では過半数の企業がAIを導入したことが明らかになった。AIの進化は前半期で加速し、研究成果が現実の運用に結びついた転換点となった。主な動きとしては、より高性能なマルチモーダルモデル、自律型AIエージェントの急速な成長、グローバル規制の強化、AIチップの高速化と低価格化が挙げられる。業界全体で「モデルの規模」から「実務タスク完遂能力」へと焦点が移り、AIはより安価で導入しやすく、信頼性が高くなり、企業業務に深く統合されるようになった。</p>
+              <p style="margin-top:10px"><a href="https://www.zonetechify.com/blog/ai-news-july-2026-latest-ai-developments" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>AI医療市場予測 - 2034年までに286億ドルに成長（CAGR 31.2%） <span class="badge medium">中</span></summary>
+            <div class="detail-content">
+              <p>グローバルAI医療市場は2026年から2034年にかけて年平均成長率31.2%で成長し、2034年までに286億ドルに達すると予測されています。この成長は、ヘルスケア業界におけるAI技術の急速な導入と革新的なアプリケーション開発によって牽引されています。医療分野でのAI活用は診断精度の向上から患者ケアの最適化まで、多くの領域で変革をもたらしており、今後の医療産業のデジタル化を大きく推進する要因となっています。</p>
+              <p style="margin-top:10px"><a href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details></div>
+        <div class="category-section">
+          <div class="category-title" style="color:#2980b9">📁 規制政策</div>
+          <details>
+            <summary>UN グローバルAIガバナンス対話 - ジュネーブサミットで各国とテック企業がAIリスク対策を協議 <span class="badge high">高</span></summary>
+            <div class="detail-content">
+              <p>国連がジュネーブで開催したグローバルAIガバナンス対話サミットでは、政府、テック企業、学識者、市民社会が参加し、急速に進化するAI技術の規制方法について2日間協議した。サミットでは、AIが「壊滅的な害」をもたらす可能性が警告される一方で、責任を持って使用すれば全人類に利益をもたらす可能性があるかという問題が焦点となった。各国とテック企業は、進化するAI技術に対応する国際的なガバナンスルール策定に向けた議論を展開した。</p>
+              <p style="margin-top:10px"><a href="https://news.un.org/en/story/2026/07/1167862" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>EU AI Act 2026年8月2日に完全施行 - 包括的でリスク基盤型の規制枠組みが効力発生 <span class="badge high">高</span></summary>
+            <div class="detail-content">
+              <p>2026年8月2日、欧州連合のAI規制法が完全施行され、歴史上初めて包括的で拘束力のあるAI規制を課す司法管轄区域となる。同時期、OECDのAI政策観測所は69カ国で1,000以上のAI政策イニシアティブを追跡しており、米国のNIST AI リスク管理フレームワークからシンガポール、中国、日本まで各国がそれぞれのAI規制の枠組みを展開している。グローバルなAI規制環境は断片化しながらも加速化し、高いリスクを伴う状況にある。</p>
+              <p style="margin-top:10px"><a href="https://www.hungyichen.com/en/insights/ai-governance-regulatory-landscape-2026" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>シンガポール エージェント型AI向けガバナンスフレームワーク公開 - 自律性レベルの分類体系を導入 <span class="badge medium">中</span></summary>
+            <div class="detail-content">
+              <p>シンガポール、EU、NIST、中国、日本など各国・地域がAIガバナンス枠組みを急速に構築している。シンガポールはエージェント型AIの自律性レベルを分類する先駆的なガバナンスフレームワークを公開した。2026年8月にEU AI法が完全発効し、EUが初めて包括的なAI規制を実施する歴史的な転換点を迎えている。世界的には1,000を超えるAI政策が69カ国で進行中であり、グローバルなAI規制の競争が激化している。各国の規制フレームワークは多様だが、AIリスク管理と自律性の統制が共通の課題となっている。</p>
+              <p style="margin-top:10px"><a href="https://www.hungyichen.com/en/insights/ai-governance-regulatory-landscape-2026" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>中国がAI輸出規制を検討 - 米国の輸出統制に対抗する戦略的動き <span class="badge medium">中</span></summary>
+            <div class="detail-content">
+              <p>2026年7月のAIニュースでは、GPT-5.6 SolやGrok 4.5などの新しい大規模言語モデルが発表され、SK HynixがNasdaqに上場し、TSMCが過去最高の四半期利益を記録した。AppleはOpenAIを訴訟し、SiriはGeminiに切り替わるなど、AI業界で大きな動きが相次いだ。Gemini 3.5 Proは発表延期を繰り返しており、GoogleはGemini 3.6 Flashの検討を進めている。HPC（AIチップ）がTSMCの四半期収益の66%を占めるなど、AI関連ハードウェアの需要が急速に拡大している。</p>
+              <p style="margin-top:10px"><a href="https://aitoolsrecap.com/Blog/AINewsJuly2026.aspx" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>スタンフォード大学の経済学者ら 200名以上がAI経済影響への対策を要求 <span class="badge medium">中</span></summary>
+            <div class="detail-content">
+              <p>スタンフォード大学のデジタル経済研究所が主導する公開書簡に、ノーベル賞受賞者16名を含む200名以上の経済学者とAI研究者が署名し、AI技術の経済的影響への対策を今すぐ講じるよう政策立案者と技術指導者に要求した。この書簡は、AIが今後数十年で産業革命より大きな変革をもたらす可能性があると警告している。署名した専門家たちは、世界の指導者が経済的混乱に備えるために直ちに行動する必要があると主張している。</p>
+              <p style="margin-top:10px"><a href="https://www.aljazeera.com/economy/2026/7/13/hundreds-of-experts-warn-the-world-must-prepare-now-for-ais-impact" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details></div>
+        <div class="category-section">
+          <div class="category-title" style="color:#2980b9">📁 製品ツール</div>
+          <details>
+            <summary>Google Gemini 3.5 Pro - 企業向けエージェントプラットフォームをGoogle Cloud Next'26で発表 <span class="badge high">高</span></summary>
+            <div class="detail-content">
+              <p>申し訳ございませんが、提供いただいたテキストは記事の本文ではなく、ナビゲーションメニューやカテゴリ一覧のみとなっており、実際の記事内容が含まれていません。記事本文の要約をご希望でしたら、本文部分を提供いただければ、3～5文で日本語要約いたします。</p>
+              <p style="margin-top:10px"><a href="https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-april-2026/" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>Cursor 3.0リリース - 複数エージェントの並列実行とバックグラウンドエージェント機能搭載 <span class="badge high">高</span></summary>
+            <div class="detail-content">
+              <p>申し訳ございませんが、提供していただいたURLの記事本文には、Cursor 3.0のリリースに関する情報が含まれていません。記事本文は「2026年のトップ10のAIツール」に関するDataNorth AIのウェブサイトのメニュー情報のみとなっており、複数エージェントの並列実行やバックグラウンドエージェント機能についての記載がないため、要約することができません。正確な記事本文の提供をお願いします。</p>
+              <p style="margin-top:10px"><a href="https://datanorth.ai/blog/top-10-ai-tools-for-2026" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>Anthropic Claude Code - CLIベースのコーディングエージェント一般提供開始 <span class="badge medium">中</span></summary>
+            <div class="detail-content">
+              <p>2026年のAIツール業界では、複数の大型アップデートと価格変更が相次いだ。Anthropicが新モデルを相次ぎリリースし、ChatGPTは価格体系を段階的に変更するなど、主要プレイヤーが競争を激化させた。また、GitHub CopilotやReplit Agentなどの開発者向けツールも新しい料金体系を導入した。同時にGoogleなどが価格競争を仕掛け、AI市場全体での価格低下圧力が強まった。</p>
+              <p style="margin-top:10px"><a href="https://toolchase.com/blog/ai-tools-news-2026/" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>Google Search I/O 2026 - AI Modeが月間10億ユーザーを突破、agentic coding機能統合 <span class="badge medium">中</span></summary>
+            <div class="detail-content">
+              <p>Google Search I/O 2026では、Google SearchのAI Modeが月間10億ユーザーを突破し、AIエージェント技術の統合が発表されました。agentic coding機能が新たに統合され、検索体験がさらに高度なAI活用へシフトしています。このアップデートにより、ユーザーはより自動化された複雑なタスク処理が可能になります。GoogleはAI検索イノベーションの新時代への移行を推進しており、開発者向けツールやGeminiモデルなど複数のプロダクトを通じて展開されています。</p>
+              <p style="margin-top:10px"><a href="https://blog.google/products-and-platforms/products/search/search-io-2026/" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>Lucyd スマートアイウェア - Claude AI統合により複合モデル選択が可能に <span class="badge low">低</span></summary>
+            <div class="detail-content">
+              <p>Lucydのスマートアイウェアに、Claude AIが統合され、すべての顧客がLucydアプリを通じて無料で利用できるようになりました。ユーザーはClaudeとChatGPTの間で切り替えが可能であり、会話の文脈を失うことなくモデルを変更できます。この統合により、画像やドキュメント分析などの機能が提供されます。</p>
+              <p style="margin-top:10px"><a href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank">🔗 元の記事を読む</a></p>
+            </div>
+          </details></div>
+  </div>
+  <footer>Powered by Claude AI | 自動生成 | 2026年07月18日</footer>
+  <script>
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-content').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-btn').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      document.getElementById('tab-' + tab).classList.add('active');
+      document.querySelector('.tab-btn.' + tab).classList.add('active');
+    }
+  </script>
+</body>
+</html>
